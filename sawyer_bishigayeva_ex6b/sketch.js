@@ -1,7 +1,7 @@
 ///this is based on ex4 – monster in p5
-///also int
+///also features OOP and inheritance concepts from ex6
 
-var a;
+///setting up global variables
 var l;
 var h
 var b;
@@ -10,25 +10,30 @@ var m;
 function setup() {
   createCanvas(600, 800);
   background(255);
-
-  a = new Arcs(0, 0, 0, random(255));
-  l = new Legs(0, 0, 0, random(255));
+  
+  ///creating all the objects
+  l = new Legs(0,0, 100, random(255));
   h = new Head(0, 0, random(255), random(255));
   m = new Mowhawk(25.0, 2.5, 0, random(255));
   b = new Body(0, 0, 0, random(255));
 }
 
 function draw() {
+  ///redraw background
   background(255);
- 
+  
+  //calling each object method one by one
   l.display();
-  l.applyForce();
   l.update();
+  l.checkEdges();
   m.display();
+  m.checkEdges();
   m.update();
   b.display();
-  l.update();
+  b.update();
+  b.checkEdges();
   h.display();
-  l.update();
+  h.update();
+  h.checkEdges();
 
 }

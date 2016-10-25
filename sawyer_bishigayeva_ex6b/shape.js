@@ -1,30 +1,30 @@
 ///parent class that moves according to vectors
 
-//creating global variables for the objects
+
 
 function Shape (x, y, r) {
 
+  //creating vectors
   this.position = createVector(x, y);
   this.velocity = createVector(0, 0);
   this.acceleration = createVector(0, 0);
   this.r = r;
 
-  this.applyForce = function(force) {
-    var f = p5.Vector.div(force, 3);
-    this.acceleration.add(f);
-  };
-    
+
+    ///update will move things around
   this.update = function() {
     this.velocity.add(this.acceleration);
     this.position.add(this.velocity);
     this.acceleration.mult(0);
   };
 
+//this will be overriden in child classes
   this.display = function() {
     point(this.x, this.y, this.r); 
     
   };
 
+///bounce off the edges
   this.checkEdges = function() {
     if (this.position.x > width) {
       this.position.x = width;
